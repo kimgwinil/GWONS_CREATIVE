@@ -14,6 +14,13 @@ import { ConceptPlan } from '../../modules/concept-plans/entities/concept-plan.e
 import { Moodboard } from '../../modules/moodboards/entities/moodboard.entity';
 import { LayoutSketch } from '../../modules/layout-sketches/entities/layout-sketch.entity';
 import { IntegratedPlan } from '../../modules/integrated-plans/entities/integrated-plan.entity';
+// Phase 2
+import { BasicDesign } from '../../modules/basic-designs/entities/basic-design.entity';
+import { DetailDesign } from '../../modules/detail-designs/entities/detail-design.entity';
+import { RenderAsset } from '../../modules/render-assets/entities/render-asset.entity';
+import { CadDrawing } from '../../modules/cad-drawings/entities/cad-drawing.entity';
+import { MarketResearch } from '../../modules/market-researches/entities/market-research.entity';
+import { DesignReview } from '../../modules/design-reviews/entities/design-review.entity';
 
 @Module({
   imports: [
@@ -32,6 +39,8 @@ import { IntegratedPlan } from '../../modules/integrated-plans/entities/integrat
           Project, Exhibit, DesignAsset, ProcurementItem,
           // Phase 1
           Scenario, ConceptPlan, Moodboard, LayoutSketch, IntegratedPlan,
+          // Phase 2
+          BasicDesign, DetailDesign, RenderAsset, CadDrawing, MarketResearch, DesignReview,
         ],
         synchronize: config.get('NODE_ENV', 'development') === 'development',
         logging: config.get('NODE_ENV', 'development') === 'development',
