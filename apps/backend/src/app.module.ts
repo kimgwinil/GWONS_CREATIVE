@@ -4,24 +4,37 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './core/database/database.module';
+// Phase 0
 import { ProjectsModule } from './modules/projects/projects.module';
 import { ExhibitsModule } from './modules/exhibits/exhibits.module';
 import { DesignAssetsModule } from './modules/design-assets/design-assets.module';
 import { ProcurementModule } from './modules/procurement/procurement.module';
+// Phase 1 — 기획팀 (직렬)
+import { ScenariosModule } from './modules/scenarios/scenarios.module';
+import { ConceptPlansModule } from './modules/concept-plans/concept-plans.module';
+// Phase 1 — 3D/2D팀 (병렬)
+import { MoodboardsModule } from './modules/moodboards/moodboards.module';
+import { LayoutSketchesModule } from './modules/layout-sketches/layout-sketches.module';
+// Phase 1 — 통합 기획서 (합류)
+import { IntegratedPlansModule } from './modules/integrated-plans/integrated-plans.module';
 
 @Module({
   imports: [
-    // 환경 변수 전역 로드
     ConfigModule.forRoot({ isGlobal: true }),
-    // 데이터베이스
     DatabaseModule,
-    // 기획팀 도메인
+    // ── Phase 0 ───────────────────────────
     ProjectsModule,
     ExhibitsModule,
-    // 3D/2D 디자인팀 도메인
     DesignAssetsModule,
-    // 조달팀 도메인
     ProcurementModule,
+    // ── Phase 1: 기획팀 (직렬) ────────────
+    ScenariosModule,
+    ConceptPlansModule,
+    // ── Phase 1: 3D/2D팀 (병렬) ──────────
+    MoodboardsModule,
+    LayoutSketchesModule,
+    // ── Phase 1: 통합 (합류) ──────────────
+    IntegratedPlansModule,
   ],
 })
 export class AppModule {}
